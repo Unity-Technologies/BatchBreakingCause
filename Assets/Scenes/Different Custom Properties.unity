@@ -281,8 +281,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c499c731416f3543899717c4f0023b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeshRenderers: []
-  Colors: []
+  MeshRenderers:
+  - {fileID: 355269633}
+  - {fileID: 1449642419}
+  Colors:
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 0.034482718, g: 1, b: 0, a: 0}
 --- !u!4 &956843916
 Transform:
   m_ObjectHideFlags: 0

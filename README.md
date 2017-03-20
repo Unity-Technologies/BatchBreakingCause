@@ -1,79 +1,31 @@
 # Batch Breaking Cause
 This project demonstrates different cases when Unity has to break a batch while rendering.  
-Best used with Unity 5.6b4+ where Frame Debugger window tells you why Unity had to start a new batch.
+Best used with Unity 5.6b4+ where the Frame Debugger window shows why Unity had to start a new batch.
 
 # Causes
-### Additional Vertex Streams
-A mesh renderer has additional vertex streams. Dynamic batching doesn't support such mesh renderers.
 
-### Deferred Objects on Different Lighting Layers
-Objects are on dfferent lighting layers.
-
-### Deferred Objects Split by Shadow Distance
-Some objects are within the shadow distance, while others are not.
-
-### Different Combined Meshes
-The combined mesh is different between static-batched objects.
-
-### Different Custom Properties
-Objects have different MaterialProperyBlock set.
-
-### Different Lights
-Objects are affected by different forward lights.
-
-### Different Materials
-Objects have different materials.
-
-### Different Reflection Probes
-Objects are affected by different reflection probes.
-
-### Different Shadow Caster Hash
-Objects either have different shadow caster shaders, or have different shader properties / keywords that affect the output of the shadow caster pass.
-
-### Different Shadow Receiving Settings
-Objects either have different "Receive Shadows" settings, or some objects are within the shadow distance, while some other objects are not. 
-
-### Different Static Batching Flags
-Objects have different static batching settings.
-
-### Dynamic Batching Disabled to Avoid Z-Fighting
-Dynamic batching is turned off in Player Settings or is disabled temporarily in the current context to avoid z-fighting.
-
-### Instancing Different Geometries
-Rendering different meshes or sub-meshes with GPU instancing.
-
-### Lightmapped Objects
-Objects use light maps.
-
-### Lightprobe Affected Objects
-Objects are affected by different light probes.
-
-### Mixed Sided Mode Shadow Casters
-Objects have different "Cast Shadows" settings.
-
-### Multipass
-An object is using a multi-pass shader.
-
-### Multiple Forward Lights
-An object is affected by multiple forward lights. 
-
-### Non-instanceable Property Set
-Non-instanced properties set for instanced shader.
-
-### Odd Negative Scaling
-An object has odd negative scaling.
-
-### Shader Disables Batching
-The shader explixitly disables batching with the "DisableBatching" tag.
-
-### Too Many Indices in Dynamic Batch
-There are too many indices (more than 32k) in a dynamic batch.
-
-### Too Many Indices in Static Batch
-There are too many indices in the combined mesh of a static batch. The limit is 48k indices on OpenGL ES, 32k on OSX and 64k on other platforms.
-
-### Too Many Vertex Attributes for Dynamic Batching
-A submesh we are trying to dynamicly batch has more than 900 vertex attributes.
-
-### Too Many Vertices for Dynamic Batching
-A submesh we are trying to dynamicly batch has more than 300 vertices.
+- **Additional Vertex Streams** — the object has additional vertex streams set using MeshRenderer.additionalVertexStreams.
+- **Deferred Objects on Different Lighting Layers** — the object is on a different light layer.
+- **Deferred Objects Split by Shadow Distance** — one of the objects is within shadow distance, the other one is not.
+- **Different Combined Meshes** — the object belongs to another combined static mesh.
+- **Different Custom Properties** — the object has a different MaterialProperyBlock set.
+- **Different Lights** — the object is affected by a different forward light.
+- **Different Materials** — the object has a different material.
+- **Different Reflection Probes** — the object is affected by a different reflection probe.
+- **Different Shadow Caster Hash** — the objects either have different shadow caster shaders, or have different shader properties / keywords that affect the output of the shadow caster pass.
+- **Different Shadow Receiving Settings** — the objects either have different "Receive Shadows" settings, or some objects are within the shadow distance, while some other objects are not. 
+- **Different Static Batching Flags** — the object has different static batching settings.
+- **Dynamic Batching Disabled to Avoid Z-Fighting** — dynamic batching is turned off in Player Settings or disabled temporarily in the current context to avoid z-fighting.
+- **Instancing Different Geometries** — rendering different meshes or sub-meshes with GPU instancing.
+- **Lightmapped Objects** — the object uses a different light map or has different light map uv transformations within the same light map.
+- **Lightprobe Affected Objects** — the object is affected by different light probes.
+- **Mixed Sided Mode Shadow Casters** — objects have different "Cast Shadows" settings.
+- **Multipass** — the object is using a multi-pass shader.
+- **Multiple Forward Lights** — the object is affected by multiple forward lights.
+- **Non-instanceable Property Set** — non-instanced properties are set for an instanced shader.
+- **Odd Negative Scaling** — the object has odd negative scaling (e.g. (1, -1, 1)).
+- **Shader Disables Batching** — the shader explicitly disables batching with the "DisableBatching" tag.
+- **Too Many Indices in Dynamic Batch** — there are too many indices (more than 32k) in a dynamic batch.
+- **Too Many Indices in Static Batch** — there are too many indices in the combined mesh of a static batch. The limit is 48k indices on OpenGL ES, 32k on OSX and 64k on other platforms.
+- **Too Many Vertex Attributes for Dynamic Batching** — a submesh we are trying to dynamically batch has more than 900 vertex attributes.
+- **Too Many Vertices for Dynamic Batching** — a submesh we are trying to dynamically batch has more than 300 vertices.
